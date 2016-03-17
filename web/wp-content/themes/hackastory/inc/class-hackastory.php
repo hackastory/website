@@ -59,12 +59,13 @@ class Hackastory {
         function hackastory_votes_callback() {
             $post_id  = $_POST['post_id'];
             $meta_key = 'project-votes-' . $_POST['type'];
-            $votes    = max(0, get_post_meta($post_id, $meta_key, true) + intval($_POST['votes']));
+            $votes    = get_post_meta($post_id, $meta_key, true) + intval($_POST['votes']);
 
             update_post_meta($post_id, $meta_key, $votes);
             wp_die();
         }
         add_action('wp_ajax_hackastory_votes', 'hackastory_votes_callback');
+        add_action('wp_ajax_nopriv_hackastory_votes', 'hackastory_votes_callback');
     }
 
     public function navMenu($handle = self::DEFAULT_NAVMENU) {
