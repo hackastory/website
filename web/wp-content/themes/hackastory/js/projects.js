@@ -125,7 +125,7 @@
                         return ($b.attr('data-experiment-votes') > $a.attr('data-experiment-votes')) ? 1 : -1;
                     case 'most-potential':
                         return ($b.attr('data-potentional-votes') > $a.attr('data-potentional-votes')) ? 1 : -1;
-                    case 'recent':
+                    default:
                         return ($b.attr('data-timestamp') > $a.attr('data-timestamp')) ? 1 : -1;
                 }
             }).appendTo($wrapper);

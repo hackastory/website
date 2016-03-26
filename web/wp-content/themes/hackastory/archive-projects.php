@@ -21,19 +21,19 @@
                     <div class="projects-notification">
                         <div class="row">
                             <div class="large-12 columns">
-                                <h2 class="projects-notification-heading">Masters of Tinkering Awards</h2>
+                                <h2 class="projects-notification-heading">Masters of Tinkering Awards 2016</h2>
                             </div>
                             <div class="large-6 columns">
                                 <p class="projects-notification-description">In 1 year: <?php echo count($events['choices']); ?> hackathons, 4 countries, 3 continents and <?php echo $projects->found_posts; ?> prototypes. Time to celebrate with the Masters of Tinkering Awards.</p>
-                                <p><strong class="projects-notification-goal">Choose a winner in each catagory</strong></p>
+                                <p><strong class="projects-notification-goal">You chose the winners of the first Masters of Tinkering Awards:</strong></p>
                             </div>
                             <div class="large-6 columns">
                                 <div class="projects-notification-icon project-vote-experimental">
-                                    <h3 class="projects-notification-subheading">Best experiment</h3>
+                                    <h3 class="projects-notification-subheading">Best experiment: Flight</h3>
                                     <p>Stretching the boundaries of possibilities</p>
                                 </div>
                                 <div class="projects-notification-icon project-vote-potential">
-                                    <h3 class="projects-notification-subheading">Most potential</h3>
+                                    <h3 class="projects-notification-subheading">Most potential: News Bricks</h3>
                                     <p>Creations with exceeding values</p>
                                 </div>
                             </div>
@@ -60,25 +60,6 @@
                                     <?php
                                 }
                             ?>
-                            <h4 class="projects-filter-heading">Sort by</h4>
-                            <ul class="projects-filter-list">
-                                <li>
-                                    <input type="radio" value="most-votes" name="projects-sort" id="projects-sort-mostvotes" checked>
-                                    <label for="projects-sort-mostvotes">Most votes</label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="best-experiment" name="projects-sort" id="projects-sort-bestexperiment">
-                                    <label for="projects-sort-bestexperiment">Best experiment</label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="most-potential" name="projects-sort" id="projects-sort-mostpotential">
-                                    <label for="projects-sort-mostpotential">Most potential</label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="recent" name="projects-sort" id="projects-sort-mostrecent">
-                                    <label for="projects-sort-mostrecent">Recent</label>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -94,16 +75,10 @@
                         $projects->the_post();
                         $image = get_field('project-image');
 
-                        // Reset votes
-                        //update_post_meta(get_the_ID(), 'project-votes-experimental', 0);
-                        //update_post_meta(get_the_ID(), 'project-votes-potential', 0);
-
                         ?>
                         <li class="medium-6 columns"
                             data-categories="<?php echo join(',', get_field('project-categories')); ?>"
-                            data-timestamp="<?php the_time('U'); ?>"
-                            data-experiment-votes="<?php echo get_post_meta(get_the_ID(), 'project-votes-experimental', true); ?>"
-                            data-potentional-votes="<?php echo get_post_meta(get_the_ID(), 'project-votes-potential', true); ?>">
+                            data-timestamp="<?php the_time('U'); ?>">
                             <div class="project-excerpt">
                                 <div class="project-excerpt-image-container">
                                     <div class="project-excerpt-image"<?php if ( $image ) echo ' style="background-image: url(' . $image['sizes']['medium_large'] . ');"'; ?>></div>
@@ -134,10 +109,6 @@
                                         ?>
                                     </ul>
                                 <?php } ?>
-                                <div class="project-excerpt-votes">
-                                    <span class="project-vote project-vote-experimental" title="Cast vote for best experiment" data-postid="<?php echo get_the_ID(); ?>"><?php echo get_post_meta(get_the_ID(), 'project-votes-experimental', true); ?></span>
-                                    <span class="project-vote project-vote-potential" title="Cast vote for most potential" data-postid="<?php echo get_the_ID(); ?>"><?php echo get_post_meta(get_the_ID(), 'project-votes-potential', true); ?></span>
-                                </div>
                             </div>
                         </li>
                         <?php
